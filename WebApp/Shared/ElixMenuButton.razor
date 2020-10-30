@@ -8,6 +8,11 @@
 </elix-menu-button>
 
 @code {
+    // =============
+    // This is a Blazor component wrapper for this web component:
+    // https://component.kitchen/elix/MenuButton
+    // =============
+
     private ElementReference _menu;
     private CompositeDisposable _disposables = new CompositeDisposable();
     private DotNetObjectReference<CallbackHelper<string>> _closeCallbackReference;
