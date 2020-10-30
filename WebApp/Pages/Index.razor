@@ -1,7 +1,6 @@
 ﻿@page "/"
-<h1>Groceries</h1>
-<a href="shoppinglist">Shopping list</a>
-<hr />
+<h1>Breakpoint problem</h1>
+
 <ElixMenuButton OnMenuItemSelected="MenuSelected" OnOpenedChange="MenuOpenedChange">
     <Content>
         <elix-menu-item id="a">A</elix-menu-item>
@@ -9,42 +8,21 @@
         <elix-menu-item id="c">C</elix-menu-item>
     </Content>
 </ElixMenuButton>
-<hr />
-<button @onclick="OpenDialog">open dialog!</button>
-
-<ElixDialog @bind-IsOpen="@IsOpen">
-    <p>Save changes?</p>
-    <button @onclick="CloseDialog">Ok</button>
-    <button @onclick="CloseDialog">Cancel</button>
-</ElixDialog>
 
 @code {
-    private bool _isOpen;
-
-    public void OpenDialog(MouseEventArgs e) {
-        IsOpen = true;
-    }
-
-    public void CloseDialog(MouseEventArgs e) {
-        IsOpen = false;
-    }
-
-    public bool IsOpen
-    {
-        get { return _isOpen; }
-        set
-        {
-            if (_isOpen != value) {
-                _isOpen = value;
-            }
-        }
-    }
 
     public void MenuSelected(string id) {
-        System.Diagnostics.Debug.WriteLine(id);
+        // Put a debugger breakpoint on the line below that DOES NOT stop execution
+        // but instead prints out "Selected item {id}" to the debug console.
+        // When I do it and then open the menu and try to select something, the
+        // web browser seems to hang. If I look inside the Edge developer tools I can see
+        // it has stopped somewhere inside the code for ElixMenuButton, a Web Component
+        // that implements a menu control that tracks mouse movement and clicks. If I 
+        // remove the breakpoint, the code seems to work just fine.
+        System.Diagnostics.Debug.WriteLine("Selected item: " + id);
     }
 
     public void MenuOpenedChange(bool isOpened) {
-        System.Diagnostics.Debug.WriteLine(isOpened);
+        System.Diagnostics.Debug.WriteLine("Menu is open: " + isOpened);
     }
 }

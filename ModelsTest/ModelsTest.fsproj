@@ -34,8 +34,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Models.fsproj" />
-  </ItemGroup>
-
 </Project>
